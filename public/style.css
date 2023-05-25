@@ -1,0 +1,38 @@
+*{
+    margin: 0px;
+}
+body{
+    overflow: hidden;
+    background-image: url(assets/loginPageBackground.png);
+    background-position: 50% 30%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100dvh;
+
+    font-family: 'Big Shoulders Display', cursive;
+    font-family: 'Roboto Mono', monospace;
+}
+.title{
+    color: rgba(233, 233, 233, 1);
+    font-size: 58px;
+    font-weight: 500;
+    margin: 100px;
+    margin-top: 130px;
+}
+.loginBox{
+    width: 520px;
+    height: 500px;
+    margin: auto;
+
+    background-color: rgba(41, 82, 156, 0.32);
+    backdrop-filter: blur(20px);
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+    border-radius: 20px;
+}
+.container{
+    height: 100%;
+    width: fit-content;
+}
+
