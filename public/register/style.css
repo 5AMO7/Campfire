@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    display: block;
+    font-size: 10px;
+}
+
+body {
+    overflow: hidden;
+    background-image: url('../assets/loginPageBackground.png');
+    background-position: 50% 80%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100dvh;
+}
+
+.main {
+    position: absolute;
+
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%,-50%);
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.registerBox {
+    background: #ffffff1f;
+    height: 35rem;
+    width: 35rem;
+    border-radius: 1rem;
+    background: -moz-linear-gradient(210deg, #ffffff50, #92929250 70%);
+    backdrop-filter: blur(2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem 4rem 0rem 4rem;
+}
+
+.choiceBox {
+    display: flex;
+    width: 35rem;
+    height: 2rem;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.choiceText {
+    position: relative;
+    font-family: 'Roboto Mono', monospace;
+    color: #ffffff;
+    top: -1rem;
+}
+
+.line {
+    flex-grow: 1;
+    height: 0.2rem;
+    background-color: #ffffff;
+}
+
+
+.googleSignUpBox {
+    background: #ffffff1f;
+    height: 8rem;
+    width: 35rem;
+    border-radius: 1rem;
+    background: -moz-linear-gradient(210deg, #ffffff50, #92929250 70%);
+    backdrop-filter: blur(2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.googleSignUpBox .button {
+    margin-top: 0rem;
+}
+
+.button { 
+    width: 20rem;
+    height: 3.2rem;
+    border: none;
+    border-radius: 0.4rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.6rem;
+    background: #29529C;
+    opacity: 80%;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.group { 
+    position:relative;  
+}
+
+.field 	{
+    font-size: 1.8rem;
+    padding: 1rem 1rem 1rem 0rem;
+    display:block;
+    width: 25rem;
+    height: 3rem;
+    border:none;
+    border-bottom: 0.2rem solid #ffffff;
+    background: none;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.6rem;
+    color: #ffffff;
+}
+
+.field:focus { 
+    outline:none; 
+}
+
+#passField {
+    letter-spacing: 0.3rem;
+}
+  
+
+label {
+    color: #ffffff; 
+    font-size: 1.8rem;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left: 0.2rem;
+    top: 0.2rem;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.6rem;
+}
+  
+.field:focus ~ label, .field:valid ~ label {
+    top:-1.6rem;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
