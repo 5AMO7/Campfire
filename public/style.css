@@ -3,11 +3,12 @@ html{
 }
 *{
     margin: 0px;
+    box-sizing: border-box;
 }
 body{
     overflow: hidden;
-    background-image: url(assets/loginPageBackground.png);
-    background-position: 50% 30%;
+    background-image: url('assets/loginPageBackground.png');
+    background-position: 50% 80%;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100dvh;
@@ -17,46 +18,117 @@ body{
 }
 .title{
     color: rgba(233, 233, 233, 1);
-    font-size: 58px;
+    font-size: 48px;
     font-weight: 500;
-    margin: 100px;
-    margin-top: 130px;
+
+    margin-bottom: 3rem;
 }
 .loginBox{
-    width: 52rem;
-    height: 50rem;
-    margin: auto;
-
-    background-color: rgba(41, 82, 156, 0.32);
-    backdrop-filter: blur(20px);
-
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: #ffffff1f;
+    background: -moz-linear-gradient(210deg, #ffffff50, #92929250 70%);
+    border-radius: 1rem;
+    backdrop-filter: blur(2rem);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
     
-    border-radius: 20px;
+    height: 32rem;
+    width: 35rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem 4rem 0rem 4rem;
+    margin: auto;
 }
 input{
     height: 4rem;
     width: 70%;
 
-    font-family: 'Big Shoulders Display', cursive;
-    font-family: 'Roboto Mono', monospace;
     color: white;
     font-size: 24px;
 
     margin: auto;
-    margin-top: 10%;
+    margin-top: 15%;
 
     background-color: transparent;
-
     border: 0;
     border-bottom: 2px solid white;
-
     outline: none;
 
     display: block;
 }
-.container{
-    height: 100%;
-    width: fit-content;
-}
+label{
+    color: #ffffff; 
+    font-size: 1.8rem;
+    
+    position:absolute;
+    pointer-events:none;
+    
+    top: 0.2rem;
 
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+.info:focus ~ label, .info:valid ~ label {
+    top:-1.6rem;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+.info{
+    font-size: 1.8rem;
+    font-size: 1.6rem;
+    color: #ffffff;
+    
+    padding: 1rem 1rem 1rem 0rem;
+    display:block;
+
+    width: 25rem;
+    height: 3rem;
+
+    border:none;
+    border-bottom: 0.2rem solid #ffffff;
+    background: none;
+}
+.group { 
+    position:relative;  
+}
+.container{
+    position: absolute;
+
+    top: 50%;
+    left: 23%;
+
+    transform: translate(-50%, -50%);
+    
+    display: flex;
+    flex-direction: column;
+}
+.button { 
+    width: 20rem;
+    height: 3.2rem;
+    margin-top: 4rem;
+
+    border: none;
+    border-radius: 0.4rem;
+    
+    font-size: 1.6rem;
+    color: #ffffff;
+    font-family: 'Big Shoulders Display', cursive;
+    font-family: 'Roboto Mono', monospace;
+    
+    background: #29529C;
+    opacity: 80%;
+
+    cursor: pointer;
+}
+p{
+    color: white;
+    font-size: 1.8rem;
+    margin: auto;
+}
+p a{
+    color: rgb(96, 96, 96);
+    font-weight: 400;
+    font-style: italic;
+}
