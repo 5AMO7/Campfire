@@ -7,7 +7,7 @@ html{
 }
 body{
     overflow: hidden;
-    background-image: url('assets/loginPageBackground.png');
+    background-image: url('/public/assets/loginPageBackground.png');
     background-position: 50% 80%;
     background-repeat: no-repeat;
     background-size: cover;
