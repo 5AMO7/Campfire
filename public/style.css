@@ -132,3 +132,48 @@ p a{
     font-weight: 400;
     font-style: italic;
 }
+
+.choiceBox {
+    margin: auto;
+
+    display: flex;
+    width: 35rem;
+    height: 2rem;
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.choiceText {
+    position: relative;
+    color: #ffffff;
+    top: -1rem;
+}
+
+.line {
+    flex-grow: 1;
+    height: 0.2rem;
+    background-color: #ffffff;
+}
+
+
+.googleSignInBox {
+    margin: auto;
+    height: 8rem;
+    width: 35rem;
+    
+    background: #ffffff1f;
+    border-radius: 1rem;
+    background: -moz-linear-gradient(210deg, #ffffff50, #92929250 70%);
+    backdrop-filter: blur(2rem);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.googleSignInBox .button {
+    margin-top: 0rem;
+    display: inline-block;
+}

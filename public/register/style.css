@@ -105,6 +105,8 @@ body {
 
     font-size: 1.6rem;
     color: #ffffff;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
     
     opacity: 80%;
     cursor: pointer;
@@ -163,4 +165,14 @@ label {
     margin-bottom: 3rem;
 
     margin: auto;
+}
+p{
+    color: white;
+    font-size: 1.8rem;
+    margin: auto;
+}
+p a{
+    color: rgb(96, 96, 96);
+    font-weight: 400;
+    font-style: italic;
 }
