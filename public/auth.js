@@ -21,8 +21,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 
-console.log('entered in the js file');
-
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
@@ -30,31 +28,62 @@ const database = getDatabase(app);
 const auth = getAuth(app);
 
 
-if (document.title == 'Campfire | Register') {
+if (document.title === 'Campfire | Register') {
   const button = document.getElementById('signupBtn');
+
+  document.getElementById('emailField').oninput = function() {
+    document.getElementById("emailError").innerText = "";
+  }
+  document.getElementById('passField').oninput = function() {
+    document.getElementById("passwordError").innerText = "";
+  }
+  document.getElementById('usernameField').oninput = function() {
+    document.getElementById("usernameError").innerText = "";
+  }
 
   button.addEventListener('click',(e) => {
     var email = document.getElementById('emailField').value;
     var password = document.getElementById('passField').value;
     var username = document.getElementById('usernameField').value;
-  
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      alert('user created');
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(errorMessage);
-      // ..
-    });
+      
+      createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        alert('user created');
+        // ...
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        // ..
+        //Firebase: Error (auth/email-already-in-use).
+        errorCode = errorCode.substring(5);
+        errorCode = errorCode.replaceAll("-", " ");
+        console.log(errorCode);
+
+        switch(errorCode){
+          case "invalid email": errorCode = "Please provide a valid E-mail";
+            break;
+          case "missing password": errorCode = "Please provide a Password";
+            break;
+          case "weak password": errorCode = "Password must be 6 characters long";
+            break;
+          case "email already in use": errorCode = "E-mail already in use";
+            break;
+          case "missing email": errorCode = "Please provide an E-mail";
+        }
+        
+        if(errorCode.includes("E-mail")){
+          document.getElementById('emailError').innerText = errorCode;
+        }
+        if(errorCode.includes("Password")){
+          document.getElementById('passwordError').innerText = errorCode;
+        }
+      });
   });
 }
 
-if (document.title == 'Campfire | Login') {
+if (document.title === 'Campfire | Login') {
   const loginButton = document.getElementById('loginBtn');
 
   loginButton.addEventListener('click',(e) => {
@@ -82,7 +111,7 @@ if (document.title == 'Campfire | Login') {
 });
 }
 
-if (document.title == 'Campfire') {
+if (document.title === 'Campfire') {
   
 
   onAuthStateChanged(auth, (user) => {

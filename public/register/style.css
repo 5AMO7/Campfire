@@ -167,13 +167,18 @@ label {
 
     margin: auto;
 }
-p{
+.alreadyAMember{
     color: white;
     font-size: 1.8rem;
     margin: auto;
 }
-p a{
+.alreadyAMember a{
     color: rgb(96, 96, 96);
     font-weight: 400;
     font-style: italic;
+}
+.error{
+    color: #9a0606;
+    font-size: 1.2rem;
+    position: absolute;
 }
