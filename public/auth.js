@@ -86,6 +86,13 @@ if (document.title === 'Campfire | Register') {
 if (document.title === 'Campfire | Login') {
   const loginButton = document.getElementById('loginBtn');
 
+  document.getElementById('emailField').oninput = function() {
+    document.getElementById("emailError").innerText = "";
+  }
+  document.getElementById('passField').oninput = function() {
+    document.getElementById("passwordError").innerText = "";
+  }
+
   loginButton.addEventListener('click',(e) => {
   var email = document.getElementById('emailField').value;
   var password = document.getElementById('passField').value;
@@ -95,18 +102,30 @@ if (document.title === 'Campfire | Login') {
     // Signed in 
     const user = userCredential.user;
 
-    alert('user logged in');
-
     window.location.replace('../');
-
-    
     // ...
   })
   .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+    var errorCode = error.code;
 
-    alert(errorMessage);
+    errorCode = errorCode.substring(5);
+    errorCode = errorCode.replaceAll("-", " ");
+    console.log(errorCode);
+
+    switch(errorCode){
+      case "invalid email": errorCode = "Please provide a valid E-mail";
+        break;
+      case "missing password": errorCode = "Please provide a Password";
+        break;
+      case "wrong password": errorCode = "Wrong Password";
+    }
+        
+    if(errorCode.includes("E-mail")){
+      document.getElementById('emailError').innerText = errorCode;
+    }
+    if(errorCode.includes("Password")){
+      document.getElementById('passwordError').innerText = errorCode;
+    }
   });
 });
 }

@@ -9,10 +9,11 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
+    "redirects": [
       {
-        "source": "**",
-        "destination": "/login/index.html"
+        "source": "/",
+        "destination": "https://campfire-messenger.web.app/login/",
+        "type": 301
       }
     ]
   },

@@ -177,3 +177,8 @@ p a{
     margin-top: 0rem;
     display: inline-block;
 }
+.error{
+    color: #9a0606;
+    font-size: 1.2rem;
+    position: absolute;
+}
