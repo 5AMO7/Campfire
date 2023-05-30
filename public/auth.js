@@ -37,14 +37,22 @@ if (document.title === 'Campfire | Register') {
   document.getElementById('passField').oninput = function() {
     document.getElementById("passwordError").innerText = "";
   }
-  document.getElementById('usernameField').oninput = function() {
-    document.getElementById("usernameError").innerText = "";
+
+  document.getElementById('confirmPassField').oninput = function() {
+
+    if (document.getElementById('confirmPassField').value !== document.getElementById('passField').value) {
+      document.getElementById("passwordMatchingError").innerText = "Passwords do not match";
+      document.getElementById("signupBtn").disabled = true;
+    }
+    else {
+      document.getElementById("passwordMatchingError").innerText = "";
+      document.getElementById("signupBtn").disabled = false;
+    }
   }
 
   button.addEventListener('click',(e) => {
     var email = document.getElementById('emailField').value;
     var password = document.getElementById('passField').value;
-    var username = document.getElementById('usernameField').value;
       
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
