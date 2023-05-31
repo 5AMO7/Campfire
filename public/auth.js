@@ -110,7 +110,7 @@ if (document.title === 'Campfire | Login') {
     // Signed in 
     const user = userCredential.user;
 
-    window.location.replace('../');
+    window.location.href = '../index.html';
     // ...
   })
   .catch((error) => {
