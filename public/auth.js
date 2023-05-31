@@ -40,6 +40,9 @@ if (document.title === 'Campfire | Register') {
   document.getElementById('passField').oninput = function() {
     document.getElementById("passwordError").innerText = "";
   }
+  document.getElementById('usernameField').oninput = function() {
+    document.getElementById("usernameError").innerText = "";
+  }
 
   document.getElementById('confirmPassField').oninput = function() {
 
@@ -62,62 +65,54 @@ if (document.title === 'Campfire | Register') {
 
     getDoc(doc(db, "users", displayName)).then(docSnap => {
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        localStorage.setItem("userExists", true);
+        document.getElementById('usernameError').innerText = "This username is already in use";
       } else {
-        console.log("No such document!");
-        localStorage.setItem("userExists", false);
+        const res = createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          user.displayName = displayName;
+          alert('user created');
+          
+          console.log(user);
+  
+          setDoc(doc(db, "users", user.displayName),{
+            uid: user.uid,
+            displayName: displayName,
+            email: email
+          });
+  
+          // ...
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          // ..
+          //Firebase: Error (auth/email-already-in-use).
+          errorCode = errorCode.substring(5);
+          errorCode = errorCode.replaceAll("-", " ");
+          console.log(errorCode);
+  
+          switch(errorCode){
+            case "invalid email": errorCode = "Please provide a valid E-mail";
+              break;
+            case "missing password": errorCode = "Please provide a Password";
+              break;
+            case "weak password": errorCode = "Password must be 6 characters long";
+              break;
+            case "email already in use": errorCode = "E-mail already in use";
+              break;
+            case "missing email": errorCode = "Please provide an E-mail";
+          }
+          
+          if(errorCode.includes("E-mail")){
+            document.getElementById('emailError').innerText = errorCode;
+          }
+          if(errorCode.includes("Password")){
+            document.getElementById('passwordError').innerText = errorCode;
+          }
+        });
       }
     })
-
-    console.log(localStorage.getItem("userExists"))
-
-    if(!localStorage.getItem("userExists")){
-      const res = createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        user.displayName = displayName;
-        alert('user created');
-        
-        console.log(user);
-
-        setDoc(doc(db, "users", user.displayName),{
-          uid: user.uid,
-          displayName: displayName,
-          email: email
-        });
-
-        // ...
-      })
-      .catch((error) => {
-        var errorCode = error.code;
-        // ..
-        //Firebase: Error (auth/email-already-in-use).
-        errorCode = errorCode.substring(5);
-        errorCode = errorCode.replaceAll("-", " ");
-        console.log(errorCode);
-
-        switch(errorCode){
-          case "invalid email": errorCode = "Please provide a valid E-mail";
-            break;
-          case "missing password": errorCode = "Please provide a Password";
-            break;
-          case "weak password": errorCode = "Password must be 6 characters long";
-            break;
-          case "email already in use": errorCode = "E-mail already in use";
-            break;
-          case "missing email": errorCode = "Please provide an E-mail";
-        }
-        
-        if(errorCode.includes("E-mail")){
-          document.getElementById('emailError').innerText = errorCode;
-        }
-        if(errorCode.includes("Password")){
-          document.getElementById('passwordError').innerText = errorCode;
-        }
-      });
-    }
+     
   });
 }
 
