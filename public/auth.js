@@ -1,7 +1,8 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js';
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js';
-import { getDatabase } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js';
+import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js'; 
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -11,7 +12,7 @@ import { getDatabase } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-
 const firebaseConfig = {
   apiKey: "AIzaSyDHEb3lZ6LzN3-v-z0tE8ZDwIHkyLFV4rg",
   authDomain: "campfire-messenger.firebaseapp.com",
-  databaseURL: "https://campfire-messenger-default-rtdb.europe-west1.firebasedatabase.app",
+  // databaseURL: "https://campfire-messenger-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "campfire-messenger",
   storageBucket: "campfire-messenger.appspot.com",
   messagingSenderId: "310827928971",
@@ -24,12 +25,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-const database = getDatabase(app);
 const auth = getAuth(app);
+
+const db = getFirestore(app);
 
 
 if (document.title === 'Campfire | Register') {
-  const button = document.getElementById('signupBtn');
+  const signupButton = document.getElementById('signupBtn');
 
   document.getElementById('emailField').oninput = function() {
     document.getElementById("emailError").innerText = "";
@@ -50,15 +52,27 @@ if (document.title === 'Campfire | Register') {
     }
   }
 
-  button.addEventListener('click',(e) => {
+  signupButton.addEventListener('click',(e) => {
     var email = document.getElementById('emailField').value;
     var password = document.getElementById('passField').value;
+    var displayName = document.getElementById('usernameField').value;
       
-      createUserWithEmailAndPassword(auth, email, password)
+      const res = createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        user.displayName = displayName;
         alert('user created');
+        
+        console.log(user);
+        console.log(user.uid)
+
+        setDoc(doc(db, "users", user.uid),{
+          uid: user.uid,
+          displayName: displayName,
+          email: email
+        });
+
         // ...
       })
       .catch((error) => {
