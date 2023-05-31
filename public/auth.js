@@ -1,7 +1,8 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js';
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js';
-import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js'; 
+import { getFirestore, doc, setDoc} from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js'; 
+import { getDoc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -57,6 +58,21 @@ if (document.title === 'Campfire | Register') {
     var password = document.getElementById('passField').value;
     var displayName = document.getElementById('usernameField').value;
       
+    localStorage.setItem("userExists", false);
+
+    getDoc(doc(db, "users", displayName)).then(docSnap => {
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        localStorage.setItem("userExists", true);
+      } else {
+        console.log("No such document!");
+        localStorage.setItem("userExists", false);
+      }
+    })
+
+    console.log(localStorage.getItem("userExists"))
+
+    if(!localStorage.getItem("userExists")){
       const res = createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
@@ -65,9 +81,8 @@ if (document.title === 'Campfire | Register') {
         alert('user created');
         
         console.log(user);
-        console.log(user.uid)
 
-        setDoc(doc(db, "users", user.uid),{
+        setDoc(doc(db, "users", user.displayName),{
           uid: user.uid,
           displayName: displayName,
           email: email
@@ -102,6 +117,7 @@ if (document.title === 'Campfire | Register') {
           document.getElementById('passwordError').innerText = errorCode;
         }
       });
+    }
   });
 }
 
