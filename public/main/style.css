@@ -15,8 +15,9 @@ html {
     height: 5rem;
     display: flex;
     align-items: center;
-    margin: 2rem 2rem;
     border-radius: 1rem;
+
+    border: 0.1rem solid black;
 }
 
 .profile-image {
@@ -29,6 +30,40 @@ html {
 }
 
 #profile-username {
+    margin-left: 2rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+.chat-rooms{
+    background-color: rgb(195, 195, 195);
+    width: 30rem;
+    height: 100rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    border: 0.1rem solid black;
+}
+
+.chat-room{
+    display: flex;
+    align-items: center;
+
+    margin-top: 1rem;
+}
+
+.chat-image {
+    display: block;
+    background-image: url('../assets/loginPageBackground.png');
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin-left: 1rem;
+}
+
+.chat-name {
     margin-left: 2rem;
     font-family: 'Roboto Mono', monospace;
     font-weight: 300;
