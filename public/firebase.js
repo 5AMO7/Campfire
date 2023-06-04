@@ -5,7 +5,7 @@ import { getAuth } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-auth
 const firebaseConfig = {
     apiKey: "AIzaSyDHEb3lZ6LzN3-v-z0tE8ZDwIHkyLFV4rg",
     authDomain: "campfire-messenger.firebaseapp.com",
-    // databaseURL: "https://campfire-messenger-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL: "https://campfire-messenger-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "campfire-messenger",
     storageBucket: "campfire-messenger.appspot.com",
     messagingSenderId: "310827928971",

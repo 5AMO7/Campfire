@@ -1,5 +1,5 @@
 import { app } from '../firebase.js';
-import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js';
 import { getFirestore, doc, setDoc} from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js'; 
 import { getDoc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
@@ -34,27 +34,40 @@ signupButton.addEventListener('click',(e) => {
 
     var email = document.getElementById('emailField').value;
     var password = document.getElementById('passField').value;
-    var displayName = document.getElementById('usernameField').value;
+    var username = document.getElementById('usernameField').value;
         
     localStorage.setItem("userExists", false);
 
-    getDoc(doc(db, "users", displayName)).then(docSnap => {
+    getDoc(doc(db, "users", username)).then(docSnap => {
         if (docSnap.exists()) {
         document.getElementById('usernameError').innerText = "This username is already in use";
         } else {
         createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            user.displayName = displayName;
+            // user.displayName = displayName;
             alert('user created');
             
             console.log(user);
 
-            setDoc(doc(db, "users", user.displayName),{
+            setDoc(doc(db, "users", user.uid),{
             uid: user.uid,
-            displayName: displayName,
+            displayName: username,
             email: email
             });
+
+            updateProfile(user, {
+                displayName: username
+              }).then(() => {
+                // Profile updated!
+                console.log('username set!');
+                // ...
+              }).catch((error) => {
+                // An error occurred
+                console.log('username not set');
+                console.log(error);
+                // ...
+              });
 
             // ...
         })
@@ -62,6 +75,7 @@ signupButton.addEventListener('click',(e) => {
             var errorCode = error.code;
             // ..
             //Firebase: Error (auth/email-already-in-use).
+            console.log(errorCode);
             errorCode = errorCode.substring(5);
             errorCode = errorCode.replaceAll("-", " ");
             console.log(errorCode);
@@ -87,5 +101,5 @@ signupButton.addEventListener('click',(e) => {
         });
         }
     });
-    
+
 });

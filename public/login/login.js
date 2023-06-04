@@ -2,6 +2,7 @@ import { auth } from '../firebase.js';
 import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js';
 
 
+export const loginauth = auth;
 
 const loginButton = document.getElementById('loginBtn');
 
@@ -24,7 +25,7 @@ loginButton.addEventListener('click',(e) => {
     // Signed in 
     const user = userCredential.user;
 
-    window.location.href = '../main/index.html';
+    location.href = '../main/index.html';
     // ...
     })
 
