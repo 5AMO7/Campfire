@@ -5,6 +5,14 @@ import { getFirestore, doc, getDoc} from 'https://www.gstatic.com/firebasejs/9.2
 
 const db = getFirestore(app);
 
+var randomLoaderLength = Math.floor(Math.random() * (1100 - 800) ) + 800;
+console.log(randomLoaderLength);
+
+setTimeout(function(){
+  console.log("did the delay!");
+  document.getElementById("loader").style.visibility = "hidden";
+}, randomLoaderLength);
+
 onAuthStateChanged(auth, (user) => {
 
     if (user) {

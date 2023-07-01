@@ -7,6 +7,20 @@ html {
     display: block;
     font-size: 10px;
     user-select: none;
+    overflow: hidden;
+}
+
+#loader {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: #020715;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#loader .image img {
+    width: 10rem;
 }
 
 .container-profile {
