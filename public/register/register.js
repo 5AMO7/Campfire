@@ -30,7 +30,9 @@ document.getElementById('confirmPassField').oninput = function() {
     }
 }
 
+
 signupButton.addEventListener('click',(e) => {
+    signupButton.disabled = true;
 
     var email = document.getElementById('emailField').value;
     var password = document.getElementById('passField').value;
@@ -38,68 +40,64 @@ signupButton.addEventListener('click',(e) => {
         
     localStorage.setItem("userExists", false);
 
-    getDoc(doc(db, "users", username)).then(docSnap => {
-        if (docSnap.exists()) {
-        document.getElementById('usernameError').innerText = "This username is already in use";
-        } else {
-        createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            // user.displayName = displayName;
-            alert('user created');
-            
-            console.log(user);
+    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // user.displayName = displayName;
+        alert('user created');
+        
+        console.log(user);
 
-            setDoc(doc(db, "users", user.uid),{
-            uid: user.uid,
-            displayName: username,
-            email: email
+        setDoc(doc(db, "users", user.uid),{
+        uid: user.uid,
+        displayName: username,
+        email: email
+        });
+
+        updateProfile(user, {
+            displayName: username
+            }).then(() => {
+            // Profile updated!
+            console.log('username set!');
+            // ...
+            }).catch((error) => {
+            // An error occurred
+            console.log('username not set');
+            console.log(error);
+            // ...
             });
 
-            updateProfile(user, {
-                displayName: username
-              }).then(() => {
-                // Profile updated!
-                console.log('username set!');
-                // ...
-              }).catch((error) => {
-                // An error occurred
-                console.log('username not set');
-                console.log(error);
-                // ...
-              });
+        // ...
+    })
+    .catch((error) => {
+        signupButton.disabled = false;
+        var errorCode = error.code;
+        // ..
+        //Firebase: Error (auth/email-already-in-use).
+        console.log(errorCode);
+        errorCode = errorCode.substring(5);
+        errorCode = errorCode.replaceAll("-", " ");
+        console.log(errorCode);
 
-            // ...
-        })
-        .catch((error) => {
-            var errorCode = error.code;
-            // ..
-            //Firebase: Error (auth/email-already-in-use).
-            console.log(errorCode);
-            errorCode = errorCode.substring(5);
-            errorCode = errorCode.replaceAll("-", " ");
-            console.log(errorCode);
-
-            switch(errorCode){
-            case "invalid email": errorCode = "Please provide a valid E-mail";
-                break;
-            case "missing password": errorCode = "Please provide a Password";
-                break;
-            case "weak password": errorCode = "Password must be 6 characters long";
-                break;
-            case "email already in use": errorCode = "E-mail already in use";
-                break;
-            case "missing email": errorCode = "Please provide an E-mail";
-            }
-            
-            if(errorCode.includes("E-mail")){
-            document.getElementById('emailError').innerText = errorCode;
-            }
-            if(errorCode.includes("Password")){
-            document.getElementById('passwordError').innerText = errorCode;
-            }
-        });
+        switch(errorCode){
+        case "invalid email": errorCode = "Please provide a valid E-mail";
+            break;
+        case "missing password": errorCode = "Please provide a Password";
+            break;
+        case "weak password": errorCode = "Password must be 6 characters long";
+            break;
+        case "email already in use": errorCode = "E-mail already in use";
+            break;
+        case "missing email": errorCode = "Please provide an E-mail";
+        }
+        
+        if(errorCode.includes("E-mail")){
+        document.getElementById('emailError').innerText = errorCode;
+        }
+        if(errorCode.includes("Password")){
+        document.getElementById('passwordError').innerText = errorCode;
         }
     });
-
 });
+
+signupButton.disabled = false;
