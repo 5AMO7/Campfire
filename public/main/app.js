@@ -5,6 +5,18 @@ import { getFirestore, doc, getDoc} from 'https://www.gstatic.com/firebasejs/9.2
 
 const db = getFirestore(app);
 
+// --- Can delete ig ---
+// var loaded = false;
+
+// var randomLoaderLength = Math.floor(Math.random() * (1100 - 800) ) + 800;
+
+// setTimeout(function(){
+//   console.log("did the delay!");
+//   document.getElementById("loader").style.visibility = "hidden";
+// }, randomLoaderLength);
+
+// ----
+
 onAuthStateChanged(auth, (user) => {
 
     if (user) {
@@ -25,6 +37,12 @@ onAuthStateChanged(auth, (user) => {
             
             console.log("Document data:", docSnap.data());
             usernameText.innerHTML = user.displayName;
+            
+            // --- Sets a delay for 20ms before removing the loader
+
+            setTimeout(function(){
+              document.getElementById("loader").style.visibility = "hidden";
+            }, 20);
 
           } else {
             console.log("No such document!");

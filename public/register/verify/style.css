@@ -52,6 +52,7 @@ p {
 i {
     font-size: 7rem;
     cursor: pointer;
+    animation: respin 500ms 1;
     color: #FFD369;
 }
 
