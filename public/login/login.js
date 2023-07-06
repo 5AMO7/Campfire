@@ -7,11 +7,11 @@ export const loginauth = auth;
 const loginButton = document.getElementById('loginBtn');
 
 document.getElementById('emailField').oninput = function() {
-    document.getElementById("emailError").innerText = "";
+    document.getElementById("error").style.display = "none";
 }
 
 document.getElementById('passField').oninput = function() {
-    document.getElementById("passwordError").innerText = "";
+    document.getElementById("error").style.display = "none";
 }
 
 loginButton.addEventListener('click',(e) => {
@@ -25,6 +25,10 @@ document.querySelectorAll('input').forEach( el => {
         }
     })
 })
+
+document.getElementById("exit").onclick = function(){
+    document.getElementById("error").style.display = "none";
+}
 
 function login(){
     var email = document.getElementById('emailField').value;
@@ -55,12 +59,8 @@ function login(){
             case "user not found": errorCode = "User not found";
             break;
         }
-            
-        if(errorCode.includes("E-mail") || errorCode.includes("User")){
-            document.getElementById('emailError').innerText = errorCode;
-        }
-        if(errorCode.includes("Password")){
-            document.getElementById('passwordError').innerText = errorCode;
-        }
+
+        document.getElementById("error").style.display = "block";
+        document.getElementById("errorMSG").innerText = errorCode;
     });
 }
