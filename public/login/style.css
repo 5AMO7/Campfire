@@ -56,12 +56,33 @@ img{
     font-family: 'Big Shoulders Display', cursive;
     font-family: 'Roboto Mono', monospace;
 }
+.group { 
+    position:relative;  
+    display: grid;
+    margin-top: 2.5rem;
+}
 .info:focus{
     outline: none;
 }
-.group{
-    display: grid;
-    margin-top: 1rem;
+label{
+    color: #34343F; 
+    font-size: 1.8rem;
+    
+    position:absolute;
+    pointer-events:none;
+    
+    top: 1rem;
+    padding-left: 2rem;
+
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+.info:focus ~ label, .info:valid ~ label {
+    padding-left: 0rem;
+    top:-2.2rem;
+    font-size: 1.6rem;
+    color: #FFFFFF;
 }
 #loginBtn{
     background-color: #ffca4b;
