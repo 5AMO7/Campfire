@@ -29,6 +29,10 @@ document.querySelectorAll('input').forEach( el => {
 document.getElementById("exit").onclick = function(){
     document.getElementById("error").style.display = "none";
 }
+window.onclick = function(){
+    document.getElementById("error").style.display = "none";
+}
+
 
 function login(){
     var email = document.getElementById('emailField').value;
