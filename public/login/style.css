@@ -172,3 +172,42 @@ i{
     cursor: pointer;
     color: #ffffff45;
 }
+
+/*Wide-PHONE*/
+@media only screen and (max-width: 480px) {
+    img{
+        display: none;
+    }
+    main{
+        width: 30rem;
+    }
+    .title{
+        font-size: 2.6rem;
+        text-align: center;
+    }
+    .loginBox{
+        margin-top: 5.1rem;
+        margin-left: 3.5rem;
+    }
+}
+/*Normal-PHONE*/
+@media only screen and (max-width: 340px) {
+    img{
+        display: none;
+    }
+    main{
+        width: 26rem;
+    }
+    .title{
+        font-size: 2.4rem;
+        text-align: center;
+    }
+    .loginBox{
+        margin-top: 5.1rem;
+        margin-left: 2.5rem;
+    }
+    .info{
+        width: 20.05rem;
+        font-size: 0.8rem;
+    }
+}
