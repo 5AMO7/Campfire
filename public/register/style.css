@@ -11,115 +11,42 @@ html {
 
 body {
     overflow: hidden;
-    background-image: url('../assets/loginPageBackground.png');
-    background-position: 50% 80%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100dvh;
+
+    background: #222831;
 
     font-family: 'Big Shoulders Display', cursive;
     font-family: 'Roboto Mono', monospace;
+
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
 }
 
 .main {
-    position: absolute;
+    background-color: rgb(57, 62, 70);
+    width: 92rem;
+    height: 63rem;
+    border-radius: 2rem;
+}
 
-    top: 50%;
-    left: 60%;
+.details-section {
+    display: inline-block;
+}
+.list-section { 
+    display: inline-block;
+    width: 50%;
+}
 
-    transform: translate(-10%, -50%);
-
+.details {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
 }
-
-.registerBox {
-    margin: auto;
-    
-    flex-direction: column;
-    align-items: center;
-    gap: 4rem;
-    padding: 4rem 4rem 0rem 4rem;
-    
-    background: #ffffff1f;
-    border-radius: 1rem;
-    background: -moz-linear-gradient(210deg, #ffffff50, #92929250 70%);
-    backdrop-filter: blur(2rem);
-    display: flex;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.fieldGroup {
-    display: flex;
-    gap: 3rem;
-}
-
-.choiceBox {
-    margin: auto;
-
-    display: flex;
-    width: 35rem;
-    height: 2rem;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.choiceText {
-    position: relative;
-    color: #ffffff;
-    top: -1rem;
-}
-
-.line {
-    flex-grow: 1;
-    height: 0.2rem;
-    background-color: #ffffff;
-}
-
-
-.googleSignUpBox {
-    margin: auto;
-    height: 8rem;
-    width: 35rem;
-    
-    background: #ffffff1f;
-    border-radius: 1rem;
-    background: -moz-linear-gradient(210deg, #ffffff50, #92929250 70%);
-    backdrop-filter: blur(2rem);
-    
+.list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.googleSignUpBox .button {
-    margin-top: 0rem;
-}
-
-.button { 
-    width: 20rem;
-    height: 3.2rem;
-    margin-top: 1rem;
-    
-    border: none;
-    border-radius: 0.4rem;
-
-    font-size: 1.6rem;
-    color: #ffffff;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 700;
-    
-    opacity: 80%;
-    cursor: pointer;
-    background: #29529C;
-}
-
-#signupBtn {
-    margin-top: 2rem;
-    margin-bottom: 4rem;
 }
 
 .group { 
@@ -142,13 +69,6 @@ body {
     outline:none; 
 }
 
-#passField {
-    letter-spacing: 0.3rem;
-}
-#confirmPassField {
-    letter-spacing: 0.3rem;
-}
-
 label {
     color: #ffffff; 
 
@@ -163,33 +83,42 @@ label {
     -moz-transition:0.2s ease all; 
     -webkit-transition:0.2s ease all;
 }
-  
+
 .field:focus ~ label, .field:valid ~ label {
     top:-1.6rem;
     font-size: 1.2rem;
     color: #ffffff;
 }
 
-.title{
-    color: rgba(233, 233, 233, 1);
-    font-size: 48px;
-    font-weight: 500;
-    margin-bottom: 3rem;
+.button { 
+    width: 20rem;
+    height: 3.2rem;
+    margin-top: 1rem;
+    
+    border: none;
+    border-radius: 2rem;
 
-    margin: auto;
+    font-size: 1.6rem;
+    color: #222831;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    
+    cursor: pointer;
+    background: #FFD369;
 }
+
+#signupBtn {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
 .alreadyAMember{
     color: white;
     font-size: 1.8rem;
+    font-weight:400;
     margin: auto;
 }
 .alreadyAMember a{
     color: rgb(96, 96, 96);
-    font-weight: 400;
-    font-style: italic;
-}
-.error{
-    color: #9a0606;
-    font-size: 1.2rem;
-    position: absolute;
+    font-weight:800;
 }

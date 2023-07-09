@@ -22,60 +22,51 @@
 </head>
 <body>
     <div role="main" class="main">
-        <h1 class="title">Welcome to Campfire!</h1>
-
-        <div class="registerBox">
-
-            <div class="fieldGroup">
+        <div class="list-section">
+            <div class="list">
+                <div class="step-details">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <h2>Your details</h2>
+                    <p>Please provide your username and your email</p>
+                </div>
+                <div class="step-verify">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <h2>Verify Email</h2>
+                    <p>Click on the recieved link in your email</p>
+                </div>
+                <div class="step-password">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <h2>Choose a password</h2>
+                    <p>Enter apassword that is atleast 8 characters</p>
+                </div>
+                <div class="step-last">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <h2>Enter the wild</h2>
+                    <p>Step into the wild</p>
+                </div>
+            </div>
+        </div>
+        <div class="details-section">
+            <div class="details">
+                <h1>Your details</h1>
                 <div class="group">
                     <input type="text" name="username" id="usernameField" class="field" required>
                     <label id="usernameLabel">Username</label>
                     <p class="error" id="usernameError"></p>
                 </div>
-    
                 <div class="group">      
                     <input type="text" name="email" id="emailField" class="field" required>
                     <label id="emailLabel">Email</label>
                     <p class="error" id="emailError"></p>
                 </div>
+    
+                <input type="button" value="Next" class="button" id="signupBtn">
+    
+                <p class="alreadyAMember">Already a member? <a href="../login">Login Now</a></p>
             </div>
-            
-    
-            <div class="fieldGroup">
-                <div class="group">      
-                    <input type="password" name="password" id="passField" class="field" required>
-                    <label id="passwordLabel">Password</label>
-                    <p class="error" id="passwordError" ></p>
-                </div>
-    
-                <div class="group">
-                    <input type="password" name="password" id="confirmPassField" class="field" required>
-                    <label id="confirmPasswordLabel">Confirm Password</label>
-                    <p class="error" id="passwordMatchingError" ></p>
-                </div>
-            </div>
-            
-            <input type="button" value="Enter the wild!" class="button" id="signupBtn">
         </div>
-
-        <div class="choiceBox">
-            <div class="line"></div>
-            <h1 class="choiceText">OR</h1>
-            <div class="line"></div>
-        </div>
-    
-        <div class="googleSignUpBox">
-            <button type="button" class="button">Join with <i class="fa-brands fa-google"></i></button>
-        </div>
-
-        <p class="alreadyAMember">Already a member? <a href="../login">Login Now</a></p>
-
+        
     </div>
-
-    <div id="register-step-t">
-
-    </div>
-    
 </body>
 <!-- <div>           ███  •  ██               •  </div> -->
 <!-- <div>           ████     ██                 </div> -->
