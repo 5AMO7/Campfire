@@ -47,51 +47,55 @@ body {
 .list {
     display: flex;
     flex-direction: column;
+    color: #ffffff;
+    gap: 4rem;
 }
 
 .group { 
     position:relative;  
+    margin-top: 1.75rem;
 }
 
 .field 	{
-    padding: 1rem 1rem 1rem 0rem;
+    padding: 1rem 1rem 1rem 1rem;
     display:block;
-    width: 25rem;
+    width: 22.05rem;
     height: 3rem;
     border:none;
-    border-bottom: 0.2rem solid #ffffff;
-    background: none;
+    border: 0.2rem solid #ffffff;
+    border-radius: 2rem;
+    background: #ffffff;
     font-size: 1.6rem;
-    color: #ffffff;
+    color: #34343F;
 }
 
 .field:focus { 
     outline:none; 
 }
 
-label {
-    color: #ffffff; 
-
-    font-size: 1.8rem;
-
+label{
+    color: #34343F; 
+    font-size: 1.26rem;
+    
     position:absolute;
     pointer-events:none;
-   
-    top: 0.2rem;
     
+    top: 0.7rem;
+    padding-left: 1.4rem;
+
     transition:0.2s ease all; 
     -moz-transition:0.2s ease all; 
     -webkit-transition:0.2s ease all;
 }
-
 .field:focus ~ label, .field:valid ~ label {
-    top:-1.6rem;
-    font-size: 1.2rem;
-    color: #ffffff;
+    padding-left: 0rem;
+    top:-1.54rem;
+    font-size: 1.12rem;
+    color: #FFFFFF;
 }
 
 .button { 
-    width: 20rem;
+    width: 22.05rem;
     height: 3.2rem;
     margin-top: 1rem;
     
@@ -104,7 +108,7 @@ label {
     font-weight: 700;
     
     cursor: pointer;
-    background: #FFD369;
+    background: #FFCA4B;
 }
 
 #signupBtn {
@@ -121,4 +125,24 @@ label {
 .alreadyAMember a{
     color: rgb(96, 96, 96);
     font-weight:800;
+}
+
+.step {
+    display: flex;
+    gap: 1rem;
+}
+
+.step i {
+    font-size: 4rem;
+    position: relative;
+    color: #5B708F;
+}
+
+.step-info-part {
+    margin: 0 0 0 1rem;
+}
+
+.step-info-part h2{
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
 }

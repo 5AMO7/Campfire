@@ -23,26 +23,38 @@
 <body>
     <div role="main" class="main">
         <div class="list-section">
-            <div class="list">
-                <div class="step-details">
-                    <i class="fa-regular fa-circle-check"></i>
-                    <h2>Your details</h2>
-                    <p>Please provide your username and your email</p>
-                </div>
-                <div class="step-verify">
-                    <i class="fa-regular fa-circle-check"></i>
-                    <h2>Verify Email</h2>
-                    <p>Click on the recieved link in your email</p>
-                </div>
-                <div class="step-password">
-                    <i class="fa-regular fa-circle-check"></i>
-                    <h2>Choose a password</h2>
-                    <p>Enter apassword that is atleast 8 characters</p>
-                </div>
-                <div class="step-last">
-                    <i class="fa-regular fa-circle-check"></i>
-                    <h2>Enter the wild</h2>
-                    <p>Step into the wild</p>
+            <!-- inner-list-section -- used to center the list in the left side -->
+            <div class="inner-list-section">
+                <div class="list">
+                    <div class="step-details step">
+                        <i class="fa-regular fa-circle-check"></i>
+    
+                        <div class="step-info-part">
+                            <h2>Your details</h2>
+                            <p>Please provide your username and your email</p>
+                        </div>
+                    </div>
+                    <div class="step-verify step">
+                        <i class="fa-regular fa-circle-check"></i>
+                        <div class="step-info-part">
+                            <h2>Verify Email</h2>
+                            <p>Click on the recieved link in your email</p>
+                        </div>
+                    </div>
+                    <div class="step-password step">
+                        <i class="fa-regular fa-circle-check"></i>
+                        <div class="step-info-part">
+                            <h2>Choose a password</h2>
+                            <p>Enter apassword that is atleast 8 characters</p>
+                        </div>
+                    </div>
+                    <div class="step-last step">
+                        <i class="fa-regular fa-circle-check"></i>
+                        <div class="step-info-part">
+                            <h2>Enter the wild</h2>
+                            <p>Step into the wild</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,7 +74,7 @@
     
                 <input type="button" value="Next" class="button" id="signupBtn">
     
-                <p class="alreadyAMember">Already a member? <a href="../login">Login Now</a></p>
+                <p class="alreadyAMember">Already have an account? <a href="../login">Login Now</a></p>
             </div>
         </div>
         
