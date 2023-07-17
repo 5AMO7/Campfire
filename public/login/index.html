@@ -21,41 +21,50 @@
 <body>
     <div class="container">
 
-        <h1 class="title">Welcome to Campfire!</h1>
-
-        <main class="loginBox">
-
-            <div class="inputs">
-
-                <div class="group">
-                    <input type="text" name="" class="info" id="emailField" required>
-                    <label for="emailField">Email</label>
-                    <p class="error" id="emailError"></p>
-                </div>
-
-                <div class="group">
-                    <input type="password" name="" class="info" id="passField" required>
-                    <label for="passField">Password</label>
-                    <p class="error" id="passwordError" ></p>
-                </div>
-
-                <input type="button" value="Enter the Wild!" class="button" id="loginBtn">
-
+        <main>
+            <div class="image">
+                <img src ="../assets/chuttersnap-rLm4Wq96h_0-unsplash.jpg" alt="">
             </div>
 
+            <div class="loginBox">
+
+                <h1 class="title">Welcome Back!</h1>
+
+                <div class="inputs">
+
+                    <div class="group">
+                        <input type="text" name="" class="info" id="emailField" required>
+                        <label for="emailField">Email</label>
+                    </div>
+
+                    <div class="group">
+                        <input type="password" name="" class="info" id="passField" required>
+                        <label for="passField">Password</label>
+                    </div>
+
+                    <input type="button" value="Sign In" class="info" id="loginBtn">
+                </div>
+
+                <div class="choiceBox">
+                    <div class="line"></div>
+                    <h1 class="choiceText">OR</h1>
+                    <div class="line"></div>
+                </div>
+        
+                <div class="otherChoices">
+                    <button type="button" class="button"><i class="fa-brands fa-google"></i></button>
+                    <button type="button" class="button"><i class="fa-brands fa-twitter"></i></button>
+                    <button type="button" class="button"><i class="fa-brands fa-facebook"></i></button>
+                    <button type="button" class="button"><i class="fa-brands fa-github"></i></button>
+                </div>
+        
+                <p class="register">New to Campfire? <a href="../register">Join Now</a></p>
+            </div>
         </main>
-        <div class="choiceBox">
-            <div class="line"></div>
-            <h1 class="choiceText">OR</h1>
-            <div class="line"></div>
-        </div>
-
-        <div class="googleSignInBox">
-            <button type="button" class="button">Login with <i class="fa-brands fa-google"></i></button>
-        </div>
-
-        <p>New to Campfire? <a href="../register">Join Now</a></p>
-
+    </div>
+    <div class="error" id="error">
+        <p id="errorMSG"></p>
+        <i class="fa-solid fa-x" id="exit"></i>
     </div>
 </body>
 </html>
